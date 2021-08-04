@@ -4,16 +4,21 @@
       class="review-item"
       elevation="2"
     >
-      <v-list-item-title class="text-h6 mb-1">
-          {{title}}
-      </v-list-item-title>
+    <div class="title-container">
+        <v-icon large color="green darken-2">
+          mdi-playlist-check
+        </v-icon>
+        <v-list-item-title class="text-h6 mb-1">
+            {{title}}
+        </v-list-item-title>
+    </div>
       <div class="text--primary">
         {{description}}
       </div>
       <v-container fluid>
         <v-select
           :items="selectOptions"
-          label="Standard"
+          label="Ваш вариант"
         ></v-select> 
       </v-container>
     </v-card>
