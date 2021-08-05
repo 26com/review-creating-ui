@@ -17,7 +17,7 @@
       </div>
       <v-container>
         <v-text-field
-          @change="updateValue"
+          @input="updateValue"
           label="Введите сообщение"
           outlined
           clearable

@@ -9,7 +9,8 @@
       md="4"
       lg="4"
     >
-    <reviewExpiredTokenMessage v-if="!tokenConfirm" />
+    <reviewSendCompletedMessage v-if="sendCompleted" />
+    <reviewExpiredTokenMessage v-else-if="!tokenConfirm" />
     <div v-else-if='loading'>
       <reviewItemsLoader />
     </div>
@@ -65,6 +66,7 @@ import questionTitle from './components/reviewItems/questionTitle.vue';
 import questionBottom from './components/reviewItems/questionBottom.vue';
 import reviewItemsLoader from './components/reviewItemsLoader.vue';
 import reviewExpiredTokenMessage from './components/reviewExpiredTokenMessage.vue';
+import reviewSendCompletedMessage from './components/reviewSendCompletedMessage.vue';
 
 export default {
   data(){
@@ -77,7 +79,6 @@ export default {
   },
   name: 'Review',
   mounted(){
-    // console.log(this.$route.query);
     this.checkToken()
   },
   components: {
@@ -89,6 +90,7 @@ export default {
     questionTitle,
     questionBottom,
     reviewExpiredTokenMessage,
+    reviewSendCompletedMessage,
   },
   methods:{
     async checkToken(){
@@ -102,7 +104,14 @@ export default {
       await this.$store.dispatch('getReviewTemplate', this.$route.query.id,)
     }
   },
-  computed: mapGetters(['templateItems', 'templateDescription', 'templateName', 'loading', 'tokenConfirm'])
+  computed: mapGetters([
+    'templateItems', 
+    'templateDescription', 
+    'templateName', 
+    'loading', 
+    'tokenConfirm',
+    'sendCompleted'
+    ])
 };
 </script>
 

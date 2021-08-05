@@ -17,6 +17,7 @@
       </div>
       <v-container fluid>
         <v-select
+          @change="updateValue"
           :items="selectOptions"
           label="Ваш вариант"
         ></v-select> 
@@ -33,6 +34,12 @@ export default {
     return{
     }
   },
+  methods: {
+    updateValue(value){
+      const data = {index: this.index, itemValue: value}
+      this.$store.commit('changeTemplateItemValues', data)
+    }
+  },
   computed:{
     selectOptions(){
       return this.options.map((option) => option.text)
@@ -42,6 +49,7 @@ export default {
     title: String,
     description: String,
     options: Array,
+    index: Number,
   }
 
 }

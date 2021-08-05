@@ -25,6 +25,12 @@ export default {
         commit('changeTemplate', data)
         commit('changeTemplateValues', data)
         commit('changeLoading', false)
+        commit('changeSendCompleted', data.completed)
+      })
+    },
+    sendReviewValues({getters}){
+      clientAPI.post('save-user-review',{
+        data: getters.templateValues
       })
     },
   },
@@ -49,9 +55,13 @@ export default {
     changeLoading(state, data){
       state.loading = data
     },
+    changeSendCompleted(state, data){
+      state.sendCompleted = data
+    },
   },
   state: {
     tokenConfirm: true,
+    sendCompleted: false,
     loading: true,
     template: [],
     templateValues: [],
@@ -59,6 +69,9 @@ export default {
   getters: {
       tokenConfirm(state){
         return state.tokenConfirm
+      },
+      templateValues(state){
+        return state.templateValues
       },
       templateItems(state){
         return state.template.data.reviewTemplateItems
@@ -71,6 +84,9 @@ export default {
       },
       loading(state){
         return state.loading
+      },
+      sendCompleted(state){
+        return state.sendCompleted
       }
   },
 }

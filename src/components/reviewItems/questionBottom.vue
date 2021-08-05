@@ -17,10 +17,12 @@
         <v-card-actions>
 
           <v-btn
+            @click="sendData"
             color="green lighten-2"
             text
+            :disabled='btnStatus'
           >
-            Отправить отзыв
+            {{btnTitle}}
           </v-btn>
 
           <v-spacer></v-spacer>
@@ -34,12 +36,21 @@
 export default {
   data(){
     return {
-      show: false
+      btnTitle: 'отправить отзыв',
+      btnStatus: false
     }
   },
   props: {
     name: String,
     description: String,
+  },
+  methods: {
+    sendData(){
+      this.$store.dispatch('sendReviewValues')
+      this.btnTitle = 'отзыв отправлен'
+      this.btnStatus = true
+      this.$store.commit('changeSendCompleted', true)
+    }
   }
 
 }

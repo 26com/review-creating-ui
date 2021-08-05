@@ -19,14 +19,15 @@
         <v-radio-group
           class="radio-group"
           row
+          @change="updateValue"
         >
           <v-radio
             label="Да"
-            value="1"
+            value="Да"
           ></v-radio>
           <v-radio
             label="Нет"
-            value="radio-2"
+            value="Нет"
           ></v-radio>
         </v-radio-group>
       </v-container>   
@@ -41,7 +42,14 @@ export default {
   props: {
     title: String,
     description: String,
-  }
+    index: Number,
+  },
+  methods: {
+    updateValue(value){
+      const data = {index: this.index, itemValue: value}
+      this.$store.commit('changeTemplateItemValues', data)
+    }
+  },
 
 }
 

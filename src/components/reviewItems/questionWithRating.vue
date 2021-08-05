@@ -19,6 +19,7 @@
         <v-rating
           v-if="ratingCount <= 5"
           v-model="rating"
+          @input="updateValue"
           background-color="grey lighten-3"
           color="orange"
           :length="ratingCount"
@@ -28,6 +29,7 @@
         <v-rating
           v-else-if="ratingCount <= 8"
           v-model="rating"
+          @input="updateValue"
           background-color="grey lighten-3"
           color="orange"
           :length="ratingCount"
@@ -36,6 +38,7 @@
         <v-rating
           v-else
           v-model="rating"
+          @input="updateValue"
           background-color="grey lighten-3"
           color="orange"
           :length="ratingCount"
@@ -66,8 +69,14 @@ export default {
     description: String,
     ratingCount: Number,
     ratingText: Boolean,
+    index: Number,
   },
-
+  methods: {
+    updateValue(value){
+      const data = {index: this.index, itemValue: value}
+      this.$store.commit('changeTemplateItemValues', data)
+    }
+  },
   computed: {
     ratingToText(){
       const ratingStep = this.ratingCount / 4;
