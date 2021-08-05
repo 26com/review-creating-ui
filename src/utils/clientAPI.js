@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-import { BASE_API_URL } from '../constants';
-
 const clientAPI = axios.create({
-  baseURL: BASE_API_URL,
+  baseURL: process.env.VUE_APP_BASE_API_URL,
   // responseType: 'json',
 });
 
