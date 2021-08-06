@@ -5,12 +5,12 @@
         elevation="0"
       >
         <div class="title-container">
-        <v-icon large color="green darken-2">
-          mdi-check-outline
-        </v-icon>
-          <v-card-subtitle>
+          <v-icon large color="green darken-2">
+            mdi-check-outline
+          </v-icon>
+          <div class="text--primary">
             Отправить отзыв о работе учереждения и специалиста. Благодаря Вам мы сможем улучшить качество обслуживания. <strong>Спасибо за уделенное время</strong>. 
-          </v-card-subtitle>
+          </div>
         </div>
 
 

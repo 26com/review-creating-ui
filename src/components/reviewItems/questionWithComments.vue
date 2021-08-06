@@ -8,9 +8,9 @@
         <v-icon large color="blue darken-2">
           mdi-message-text
         </v-icon>
-        <v-list-item-title class="text-h6 mb-1 icon">
-            {{title}}
-        </v-list-item-title>
+        <div class="text--primary">
+          {{title}}
+        </div>
       </div>
       <div class="text--primary">
         {{description}}

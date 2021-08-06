@@ -27,9 +27,10 @@ export default {
 }
 .title-container{
   display: flex; 
+  align-items: flex-start;
   padding: 0.5rem;
 }
-.title-container .text-h6{
+.title-container .text--primary{
   margin-left: 0.5rem;
 }
 .loader{

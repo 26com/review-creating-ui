@@ -79,7 +79,7 @@ export default {
   },
   name: 'Review',
   mounted(){
-    this.checkToken()
+    this.getData()
   },
   components: {
     questionYesNo, 
@@ -93,15 +93,19 @@ export default {
     reviewSendCompletedMessage,
   },
   methods:{
-    async checkToken(){
+    // async checkToken(){
+    //   const data = {
+    //     id: this.$route.query.id,
+    //     token: this.$route.query.token,
+    //     }
+    //   await this.$store.dispatch('getTokenConfirm', data)
+    // },
+    async getData(){
       const data = {
         id: this.$route.query.id,
         token: this.$route.query.token,
         }
-      await this.$store.dispatch('getTokenConfirm', data)
-    },
-    async getData(){
-      await this.$store.dispatch('getReviewTemplate', this.$route.query.id,)
+      await this.$store.dispatch('getReviewTemplate', data)
     }
   },
   computed: mapGetters([

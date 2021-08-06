@@ -8,9 +8,9 @@
         <v-icon large color="green darken-2">
           mdi-playlist-check
         </v-icon>
-        <v-list-item-title class="text-h6 mb-1">
+        <div class="text--primary">
             {{title}}
-        </v-list-item-title>
+        </div>
     </div>
       <div class="text--primary">
         {{description}}
